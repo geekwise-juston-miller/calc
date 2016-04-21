@@ -17,8 +17,6 @@ var create_element = function(element_type,element_id){
     
 };
 
-
-
 var my_buttons = function(){ 
     for(var i = 0; i < calc_numbers.length; i++){
     var create_buttons = document.createElement("button");
@@ -28,8 +26,12 @@ var my_buttons = function(){
     calc_body.appendChild(create_buttons);
     
     }
-
 };
+
+var current_element = addEventListener("onclick", function(event){
+    answer_display.value = answer_display.value += this.textContent;
+    
+});
 
 
 
@@ -37,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function(event){
     document.body.appendChild(calc_body);
     my_buttons();
     create_element("input","calc_total");
+    
+    
+        
+    
     
 });
 
