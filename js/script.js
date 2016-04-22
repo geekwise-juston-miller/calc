@@ -1,6 +1,6 @@
 var calc_body;
 
-var calc_numbers = [1,2,3,4,"-","+","="];
+var calc_numbers = [1,2,3,4,"-","+","=","C"];
 
 var answer_display;
 
@@ -19,19 +19,21 @@ var create_element = function(element_type,element_id){
 
 var my_buttons = function(){ 
     for(var i = 0; i < calc_numbers.length; i++){
-    var create_buttons = document.createElement("button");
-    create_buttons.setAttribute("id", "calc_numbers_" + i);
-    var new_button = calc_numbers[i];
-    create_buttons.textContent = new_button;
-    calc_body.appendChild(create_buttons);
+        var button_tags = document.createElement("button");
+        button_tags.setAttribute("id", "button_tag_" + i);
+        
+        var item_in_array = calc_numbers[i];
+        button_tags.textContent = item_in_array;
+        calc_body.appendChild(button_tags);
+        
+        var current_button = document.getElementById("button_tag_" + i);
+        current_button.addEventListener("click", function(event){
+        answer_display.value = answer_display.value += this.textContent;
+        
+        });
     
     }
 };
-
-var current_element = addEventListener("onclick", function(event){
-    answer_display.value = answer_display.value += this.textContent;
-    
-});
 
 
 
@@ -39,57 +41,9 @@ document.addEventListener('DOMContentLoaded', function(event){
     document.body.appendChild(calc_body);
     my_buttons();
     create_element("input","calc_total");
-    
+    answer_display = document.getElementById("calc_total");
     
         
     
     
 });
-
-
-
-
-
-
-
-// var calc_numbers = [1,2,3,4,'+','-','='];
-
-// var calc_container;
-
-// var answer_display;
-
-// calc_container = document.createElement("div");
-// calc_container.setAttribute("id", "my_calc_container");
-// calc_container.style.width = "200px";
-// calc_container.style.height = "100px";
-// calc_container.style.backgroundColor = "yellow";
-
-
-// var create_element = function(element_type, element_id){
-//     var element = document.createElement(element_type);
-//     element.setAttribute( 'id', element_id);
-//     calc_container.appendChild(element);
-   
-
-// };
-
-
-// document.addEventListener("DOMContentLoaded", function(event){
-    
-//     create_element("input", "answer_display");
-    
-//      document.body.appendChild(calc_container);
-//     for( var i = 0; i < calc_numbers.length; i++){
-//         create_element("button", "calc_numbers_" +i);
-    
-//     // var create_element = document.getElementById("calc_numbers" + i);
-//     //     current_element.addEventListener("onclick", function(event){
-            
-//     //     answer_display.value = answer_display.value += this.textContent;
-//     //     });
-        
-//     }
-    
-// });
-
-
